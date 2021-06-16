@@ -34,7 +34,7 @@ interface HomeProps {
   preview: boolean;
 }
 
-export default function Home({ postsPagination }: HomeProps): JSX.Element {
+export default function Home({ postsPagination, preview }: HomeProps): JSX.Element {
   const [posts, setPosts] = useState<Post[]>([]);
   const [nextPage, setNextPage] = useState('');
 
@@ -106,6 +106,14 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
               title="Carregar mais posts" 
               onClick={handlePagination} 
             />
+          )}
+
+          {preview && (
+            <aside>
+              <Link href="/api/exit-preview">
+                <a className={commonStyles.preview}>Sair do modo preview</a>
+              </Link>
+            </aside>
           )}
 
         </main>
